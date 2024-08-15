@@ -5,6 +5,14 @@ project(imnodes)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+find_path(IMGUI_INCLUDE_DIR imgui.h PATHS imgui)
+
+if (IMGUI_INCLUDE_DIR)
+    message(STATUS "ImGui found at ${IMGUI_INCLUDE_DIR}")
+    include_directories(${IMGUI_INCLUDE_DIR})
+else()
+    message(FATAL_ERROR "ImGui not found. Please make sure it is located in ${CMAKE_SOURCE_DIR}/deps/imgui")
+endif()
 
 # determine whether this is a standalone project or included by other projects
 if (NOT DEFINED IMNODES_STANDALONE_PROJECT)
@@ -46,7 +54,7 @@ target_sources(imnodes PRIVATE
     imnodes_internal.h
     imnodes.cpp)
 target_include_directories(imnodes PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(imnodes PUBLIC ${IMNODES_IMGUI_TARGET_NAME})
+#target_link_libraries(imnodes PUBLIC ${IMNODES_IMGUI_TARGET_NAME})
 
 # Example projects
 if(IMNODES_EXAMPLES)

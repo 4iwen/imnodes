@@ -1,3 +1,5 @@
+> FOR CMAKELISTS.TXT TO WORK, IMGUI AND IMGUIZMO MUST BE IN THE SAME DIRECTORY
+
 <h1 align="center">imnodes</h1>
 
 <p align="center">A small, dependency-free node editor extension for <a href="https://github.com/ocornut/imgui">dear imgui</a>.</p>
